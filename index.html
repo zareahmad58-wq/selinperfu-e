@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عطر سلین | Selin Perfume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #f5d5d5 0%, #f9e6d5 50%, #f5d5d5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.12);
+            position: relative;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #f0e0d0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #b8956a;
+            line-height: 1;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .logo:hover { transform: scale(1.05); color: #d4849c; }
+        .logo span {
+            display: block;
+            font-size: 11px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 400;
+            letter-spacing: 5px;
+            color: #b8956a;
+            margin-top: 2px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        nav ul li button {
+            background: none;
+            border: none;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #8b6f4e;
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s;
+            position: relative;
+        }
+        nav ul li button::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d4849c, #b8956a);
+            border-radius: 10px;
+            transition: all 0.4s;
+            transform: translateX(-50%);
+        }
+        nav ul li button:hover::after,
+        nav ul li button.active::after { width: 40%; }
+        nav ul li button:hover { color: #d4849c; transform: translateY(-2px); }
+        nav ul li button.active { color: #d4849c; background: rgba(212,132,156,0.08); }
+        .header-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .header-icons i {
+            font-size: 20px;
+            color: #8b6f4e;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .header-icons i:hover { color: #d4849c; transform: scale(1.15) rotate(-8deg); }
+        .cart-icon { position: relative; cursor: pointer; }
+        .cart-badge {
+            position: absolute;
+            top: -10px; left: -10px;
+            background: #d4849c;
+            color: white;
+            font-size: 10px;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            transition: all 0.4s;
+        }
+        .cart-badge.bounce { animation: badgeBounce 0.5s ease; }
+        @keyframes badgeBounce {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.6); }
+            60% { transform: scale(0.8); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== SECTIONS ===== */
+        .page-section { display: none; animation: fadeIn 0.6s ease; }
+        .page-section.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            background: linear-gradient(135deg, #f0d5d5 0%, #e8c4c4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(240,213,213,0.3) 0%, rgba(232,196,196,0.3) 100%);
+        }
+        .hero-products {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+        }
+        .hero-products img {
+            height: 170px;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.15));
+            animation: floatProduct 6s ease-in-out infinite;
+        }
+        .hero-products img:nth-child(1) { transform: rotate(-8deg); margin-top: -60px; height: 170px; animation-delay: 0s; }
+        .hero-products img:nth-child(2) { height: 200px; z-index: 2; animation-delay: 1.5s; }
+        .hero-products img:nth-child(3) { transform: rotate(8deg); margin-top: 40px; height: 160px; animation-delay: 3s; }
+        .hero-products img:nth-child(4) { margin-top: -40px; height: 150px; animation-delay: 4.5s; }
+        @keyframes floatProduct {
+            0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+            50% { transform: translateY(-12px) rotate(var(--rot, 0deg)); }
+        }
+        .hero-flowers {
+            position: absolute; inset: 0;
+            pointer-events: none;
+        }
+        .hero-flowers img {
+            position: absolute;
+            object-fit: cover;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: floatFlower 8s ease-in-out infinite;
+        }
+        .hero-flowers img:nth-child(1) { top:20px; right:60px; width:70px; height:70px; animation-delay: 0s; }
+        .hero-flowers img:nth-child(2) { top:40px; left:80px; width:60px; height:60px; animation-delay: 2s; }
+        .hero-flowers img:nth-child(3) { bottom:60px; right:100px; width:80px; height:80px; animation-delay: 4s; }
+        @keyframes floatFlower {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(8deg); }
+        }
+        .hero-btn-wrap {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+        .explore-btn {
+            background: linear-gradient(135deg, #d4849c, #c06a84);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(212,132,156,0.4);
+            transition: all 0.4s;
+            font-family: 'Vazirmatn', sans-serif;
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
+        }
+        .explore-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #d4849c, #f5d5d5, #d4849c, #b8956a);
+            background-size: 400% 400%;
+            border-radius: 50px;
+            z-index: -1;
+            animation: shimmerBorder 3s ease-in-out infinite;
+        }
+        @keyframes shimmerBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .explore-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: all 0.6s;
+        }
+        .explore-btn:hover::after { left: 100%; }
+        .explore-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212,132,156,0.5);
+        }
+        .explore-btn:active { transform: scale(0.95); }
+
+        /* ===== محصولات ===== */
+        .content-section {
+            background: #fff;
+            padding: 40px 50px;
+            text-align: center;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: 600;
+            color: #b8956a;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .section-desc {
+            color: #a08060;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 15px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: center;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: contain;
+            margin-bottom: 12px;
+            transition: transform 0.4s ease;
+        }
+        .product-card:hover img { transform: scale(1.06); }
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #b8956a;
+            margin-bottom: 4px;
+        }
+        .product-brand {
+            font-size: 13px;
+            color: #d4849c;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        .product-type {
+            font-size: 12px;
+            color: #c4a882;
+            margin-bottom: 8px;
+        }
+        .stars { color: #d4849c; font-size: 12px; margin-bottom: 8px; }
+        .price { font-size: 16px; font-weight: 700; color: #b8956a; margin-bottom: 12px; }
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #d4849c, #c06a84);
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Vazirmatn', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        .add-to-cart .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: scale(0);
+            animation: rippleAnim 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes rippleAnim {
+            to { transform: scale(4); opacity: 0; }
+        }
+        .add-to-cart:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(212,132,156,0.35);
+        }
+        .add-to-cart:active { transform: scale(0.95); }
+        .add-to-cart.added {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+        .add-to-cart.added::before { content: '✓ '; }
+
+        /* ===== فیلتر ===== */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: #fdf8f5;
+            border-bottom: 2px solid #f0e0d0;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: #fff;
+            border: 2px solid #d4b896;
+            color: #8b6f4e;
+            padding: 7px 20px;
+            border-radius: 25px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #d4849c, #c06a84);
+            opacity: 0;
+            transition: opacity 0.4s;
+            border-radius: 25px;
+        }
+        .filter-btn:hover::before,
+        .filter-btn.active::before { opacity: 1; }
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: white;
+            border-color: #d4849c;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 6px 20px rgba(212,132,156,0.25);
+        }
+        .filter-btn span { position: relative; z-index: 1; }
+
+        /* ===== برندها ===== */
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            padding: 15px 0;
+        }
+        .brand-card {
+            background: linear-gradient(135deg, #fff 0%, #fdf6f0 100%);
+            border: 2px solid #f0e0d0;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+        .brand-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #d4849c;
+            box-shadow: 0 15px 45px rgba(212,132,156,0.15);
+        }
+        .brand-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            border: 4px solid #f0e0d0;
+            transition: all 0.4s ease;
+        }
+        .brand-card:hover img {
+            border-color: #d4849c;
+            transform: scale(1.06) rotate(-4deg);
+        }
+        .brand-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #b8956a;
+            margin-bottom: 5px;
+        }
+        .brand-card p {
+            font-size: 13px;
+            color: #a08060;
+            line-height: 1.6;
+        }
+
+        /* ===== سبد خرید ===== */
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            left: -380px;
+            width: 350px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+            z-index: 999;
+            transition: left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 25px;
+            overflow-y: auto;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .cart-panel.open { left: 0; }
+        .cart-panel .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0e0d0;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+        .cart-panel .cart-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: #b8956a;
+            font-size: 20px;
+        }
+        .cart-panel .close-cart {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #8b6f4e;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+        .cart-panel .close-cart:hover {
+            color: #d4849c;
+            transform: rotate(90deg) scale(1.2);
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f5f0eb;
+            animation: slideInItem 0.3s ease;
+        }
+        @keyframes slideInItem {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .cart-item-info { flex: 1; }
+        .cart-item-info h4 {
+            font-size: 13px;
+            color: #7a4f3a;
+            margin-bottom: 2px;
+        }
+        .cart-item-info .cart-item-price {
+            font-size: 12px;
+            font-weight: 700;
+            color: #b8956a;
+        }
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #d4849c;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .cart-item-remove:hover {
+            color: #c0392b;
+            transform: scale(1.3) rotate(90deg);
+        }
+        .cart-total {
+            padding: 12px 0;
+            border-top: 2px solid #f0e0d0;
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 700;
+            color: #7a4f3a;
+        }
+        .cart-empty {
+            text-align: center;
+            color: #a08060;
+            padding: 30px 0;
+            font-size: 14px;
+        }
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #d4849c, #c06a84);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.4s;
+            font-family: 'Vazirmatn', sans-serif;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .checkout-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: rotate(45deg) translateX(-100%);
+            transition: all 0.8s;
+        }
+        .checkout-btn:hover::before { transform: rotate(45deg) translateX(100%); }
+        .checkout-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(212,132,156,0.4);
+        }
+
+        /* ===== فوتر ===== */
+        footer {
+            background: #fff;
+            border-top: 4px solid #d4849c;
+            padding: 25px 40px;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            color: #8b6f4e;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4849c;
+            transition: width 0.3s;
+        }
+        .footer-links a:hover::after { width: 100%; }
+        .footer-links a:hover { color: #d4849c; }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        .social-icons i {
+            font-size: 18px;
+            color: #8b6f4e;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .social-icons i:hover {
+            color: #d4849c;
+            transform: translateY(-4px) scale(1.15) rotate(8deg);
+        }
+        .copyright { font-size: 12px; color: #8b6f4e; }
+
+        /* ===== پیام ===== */
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(46,204,113,0.35);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 9999;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); }
+            .brands-grid { grid-template-columns: repeat(2, 1fr); }
+            header { padding: 15px 25px; }
+            .content-section { padding: 30px 25px; }
+            .cart-panel { width: 320px; left: -340px; }
+        }
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .brands-grid { grid-template-columns: repeat(1, 1fr); }
+            header { padding: 12px 15px; justify-content: center; }
+            nav ul { justify-content: center; }
+            nav ul li button { font-size: 12px; padding: 6px 12px; }
+            .hero { height: 400px; }
+            .hero-products img { height: 120px !important; }
+            .hero-products img:nth-child(2) { height: 150px !important; }
+            .hero-btn-wrap { padding-bottom: 25px; }
+            .explore-btn { padding: 10px 25px; font-size: 14px; }
+            .content-section { padding: 20px 15px; }
+            .section-title { font-size: 22px; }
+            .cart-panel { width: 280px; left: -300px; }
+            .logo { font-size: 22px; }
+            .hero-flowers img { display: none; }
+        }
+        @media (max-width: 480px) {
+            .product-grid { grid-template-columns: repeat(1, 1fr); }
+            .hero-products img:nth-child(1),
+            .hero-products img:nth-child(3),
+            .hero-products img:nth-child(4) { display: none; }
+            .hero-products img:nth-child(2) { height: 160px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== سبد خرید ===== -->
+    <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+            <h2>🛍️ سبد خرید</h2>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cartItems"><div class="cart-empty">سبد خرید خالی است</div></div>
+        <div id="cartFooter" style="display:none;">
+            <div class="cart-total"><span>مجموع:</span><span id="cartTotal">۰٫۰۰ دلار</span></div>
+            <button class="checkout-btn" onclick="checkout()">💳 پرداخت</button>
+        </div>
+    </div>
+
+    <!-- ===== پیام ===== -->
+    <div class="toast" id="toast">✅ به سبد اضافه شد</div>
+
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+        <header>
+            <div class="logo" onclick="showSection('home')">
+                SELIN <span>PERFUME</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><button class="nav-btn active" onclick="showSection('home')" data-target="home">خانه</button></li>
+                    <li><button class="nav-btn" onclick="showSection('perfumes')" data-target="perfumes">عطرها</button></li>
+                    <li><button class="nav-btn" onclick="showSection('cosmetics')" data-target="cosmetics">آرایشی</button></li>
+                    <li><button class="nav-btn" onclick="showSection('brands')" data-target="brands">برندها</button></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge">۰</span>
+                </div>
+                <i class="far fa-user"></i>
+            </div>
+        </header>
+
+        <!-- ===== HOME ===== -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1200&h=600&fit=crop" class="hero-img" alt="مجموعه عطر">
+                <div class="hero-overlay"></div>
+                <div class="hero-products">
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=200&h=250&fit=crop" alt="عطر">
+                    <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=200&h=250&fit=crop" alt="عطر">
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=200&h=250&fit=crop" alt="عطر">
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=200&h=250&fit=crop" alt="عطر">
+                </div>
+                <div class="hero-flowers">
+                    <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=120&h=120&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=120&h=120&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa3f44a27c?w=120&h=120&fit=crop">
+                </div>
+                <div class="hero-btn-wrap">
+                    <button class="explore-btn" onclick="showSection('perfumes')">✨ مشاهده مجموعه</button>
+                </div>
+            </div>
+            <div class="content-section">
+                <h2 class="section-title">پرفروش‌ترین‌ها</h2>
+                <p class="section-desc">محصولات محبوب و پرفروش برند سلین</p>
+                <div class="product-grid" id="homeGrid"></div>
+            </div>
+        </section>
+
+        <!-- ===== PERFUMES ===== -->
+        <section id="perfumes" class="page-section">
+            <div style="background:linear-gradient(135deg,#f0d5d5,#e8c4c4);padding:50px 30px;text-align:center;">
+                <h1 style="font-family:'Playfair Display',serif;font-size:34px;color:#b8956a;">مجموعه عطرها</h1>
+                <p style="color:#a08060;font-size:16px;">بهترین عطرهای زنانه، مردانه و یونیکس</p>
+            </div>
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterProducts('all',this)"><span>همه</span></button>
+                <button class="filter-btn" onclick="filterProducts('women',this)"><span>زنانه</span></button>
+                <button class="filter-btn" onclick="filterProducts('men',this)"><span>مردانه</span></button>
+                <button class="filter-btn" onclick="filterProducts('unisex',this)"><span>یونیکس</span></button>
+            </div>
+            <div class="content-section">
+                <div class="product-grid" id="perfumeGrid"></div>
+            </div>
+        </section>
+
+        <!-- ===== COSMETICS ===== -->
+        <section id="cosmetics" class="page-section">
+            <div style="background:linear-gradient(135deg,#f0d5d5,#e8c4c4);padding:50px 30px;text-align:center;">
+                <h1 style="font-family:'Playfair Display',serif;font-size:34px;color:#b8956a;">لوازم آرایشی</h1>
+                <p style="color:#a08060;font-size:16px;">برترین محصولات آرایشی و مراقبت پوست</p>
+            </div>
+            <div class="content-section">
+                <div class="product-grid" id="cosmeticGrid"></div>
+            </div>
+        </section>
+
+        <!-- ===== BRANDS ===== -->
+        <section id="brands" class="page-section">
+            <div style="background:linear-gradient(135deg,#f0d5d5,#e8c4c4);padding:50px 30px;text-align:center;">
+                <h1 style="font-family:'Playfair Display',serif;font-size:34px;color:#b8956a;">برندهای معتبر</h1>
+                <p style="color:#a08060;font-size:16px;">برترین برندهای عطر و ادکلن جهان و خاورمیانه</p>
+            </div>
+            <div class="content-section">
+                <div class="brands-grid">
+                    <div class="brand-card">
+                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=250&h=250&fit=crop" alt="لتافه">
+                        <h3>لتافه | Lattafa</h3>
+                        <p>برند اماراتی معروف با عطرهای لوکس و ماندگار</p>
+                    </div>
+                    <div class="brand-card">
+                        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=250&h=250&fit=crop" alt="احمد المغربی">
+                        <h3>احمد المغربی</h3>
+                        <p>عطرساز مشهور عربی با ترکیبات شرقی و عودی ناب</p>
+                    </div>
+                    <div class="brand-card">
+                        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=250&h=250&fit=crop" alt="سوئیس عربیان">
+                        <h3>سوئیس عربیان</h3>
+                        <p>ترکیب هنر سوئیسی با رایحه‌های شرقی اصیل</p>
+                    </div>
+                    <div class="brand-card">
+                        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=250&h=250&fit=crop" alt="رصاصی">
+                        <h3>رصاصی | Rasasi</h3>
+                        <p>یکی از قدیمی‌ترین برندهای عربی با طیف گسترده</p>
+                    </div>
+                    <div class="brand-card">
+                        <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=250&h=250&fit=crop" alt="عربیان عود">
+                        <h3>عربیان عود</h3>
+                        <p>تخصص در عود و رایحه‌های چوبی شرقی با کیفیت عالی</p>
+                    </div>
+                    <div class="brand-card">
+                        <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?w=250&h=250&fit=crop" alt="اجمل">
+                        <h3>اجمل | Ajmal</h3>
+                        <p>برند هندی-عربی با سابقه‌ای طولانی در عطرسازی</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <div class="footer-links">
+                <a onclick="showSection('home')">درباره سلین</a>
+                <a onclick="showSection('home')">تماس با ما</a>
+                <a onclick="showSection('home')">ارسال و بازگشت</a>
+                <a onclick="showSection('home')">حریم خصوصی</a>
+            </div>
+            <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-pinterest-p"></i>
+            </div>
+            <div class="copyright">© ۲۰۲۴ عطر سلین. تمامی حقوق محفوظ است.</div>
+        </footer>
+    </div>
+
+    <script>
+        // ===== داده‌های محصولات =====
+        const products = {
+            home: [
+                { id: 1, name: 'SELIN ROSE ÉLIXIR', type: 'ادو پرفیوم', price: 120, img: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=250&h=250&fit=crop', category: 'women' },
+                { id: 2, name: 'SELIN OUD ROYAL', type: 'ادو پرفیوم', price: 150, img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=250&h=250&fit=crop', category: 'men' },
+                { id: 3, name: 'SELIN AMBER NUIT', type: 'ادو پرفیوم', price: 135, img: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=250&h=250&fit=crop', category: 'unisex' },
+                { id: 4, name: 'SELIN MYSTIC ROSE', type: 'ادو پرفیوم', price: 110, img: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=250&h=250&fit=crop', category: 'women' }
+            ],
+            perfumes: [
+                { id: 5, name: 'Rose Élixir', brand: 'لتافه', type: 'ادو پرفیوم زنانه', price: 120, img: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=250&h=250&fit=crop', category: 'women' },
+                { id: 6, name: 'Oud For Glory', brand: 'لتافه', type: 'ادو پرفیوم مردانه', price: 95, img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=250&h=250&fit=crop', category: 'men' },
+                { id: 7, name: 'Amber Oud', brand: 'احمد المغربی', type: 'ادو پرفیوم یونیکس', price: 145, img: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=250&h=250&fit=crop', category: 'unisex' },
+                { id: 8, name: 'Shaghaf Oud', brand: 'سوئیس عربیان', type: 'ادو پرفیوم مردانه', price: 85, img: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=250&h=250&fit=crop', category: 'men' },
+                { id: 9, name: 'Yara', brand: 'لتافه', type: 'ادو پرفیوم زنانه', price: 110, img: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=250&h=250&fit=crop', category: 'women' },
+                { id: 10, name: 'Musk Tahara', brand: 'احمد المغربی', type: 'ادو پرفیوم زنانه', price: 130, img: 'https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=250&h=250&fit=crop', category: 'women' },
+                { id: 11, name: 'Hawas', brand: 'رصاصی', type: 'ادو پرفیوم مردانه', price: 75, img: 'https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?w=250&h=250&fit=crop', category: 'men' },
+                { id: 12, name: 'Kalemat', brand: 'عربیان عود', type: 'ادو پرفیوم یونیکس', price: 160, img: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=250&h=250&fit=crop', category: 'unisex' }
+            ],
+            cosmetics: [
+                { id: 13, name: 'Rose Velvet', brand: 'سلین', type: 'رژلب مایع مات', price: 35, img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=250&h=250&fit=crop', category: 'cosmetic' },
+                { id: 14, name: 'Nude Palette', brand: 'سلین', type: 'پالت سایه چشم', price: 55, img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=250&h=250&fit=crop', category: 'cosmetic' },
+                { id: 15, name: 'Silk Foundation', brand: 'سلین', type: 'کرم پودر سیلک', price: 45, img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=250&h=250&fit=crop', category: 'cosmetic' },
+                { id: 16, name: 'Glow Highlighter', brand: 'سلین', type: 'هایلایتر رزگلد', price: 40, img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=250&h=250&fit=crop', category: 'cosmetic' },
+                { id: 17, name: 'Rose Serum', brand: 'سلین', type: 'سرم آبرسان رز', price: 65, img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=250&h=250&fit=crop', category: 'cosmetic' },
+                { id: 18, name: 'Gold Mask', brand: 'سلین', type: 'ماسک طلا', price: 25, img: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=250&h=250&fit=crop', category: 'cosmetic' },
+                { id: 19, name: 'Lash Queen', brand: 'سلین', type: 'ریمل حجم‌دهنده', price: 30, img: 'https://images.unsplash.com/photo-1590156206657-b42a38e7e2b5?w=250&h=250&fit=crop', category: 'cosmetic' },
+                { id: 20, name: 'Smooth Primer', brand: 'سلین', type: 'پرایمر صورت', price: 38, img: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=250&h=250&fit=crop', category: 'cosmetic' }
+            ]
+        };
+
+        let cart = [];
+        let currentFilter = 'all';
+
+        // ===== رندر محصولات =====
+        function renderProducts(section) {
+            const grid = document.getElementById(section + 'Grid');
+            if (!grid) return;
+            const items = products[section] || [];
+            grid.innerHTML = items.map(p => {
+                const stars = '★'.repeat(4) + '☆';
+                return `
+                    <div class="product-card" data-category="${p.category}">
+                        <img src="${p.img}" alt="${p.name}">
+                        <div class="product-name">${p.name}</div>
+                        ${p.brand ? `<div class="product-brand">${p.brand}</div>` : ''}
+                        <div class="product-type">${p.type}</div>
+                        <div class="stars">${stars}</div>
+                        <div class="price">${p.price}.۰۰ دلار</div>
+                        <button class="add-to-cart" onclick="addToCart(${p.id}, '${section}')">
+                            افزودن به سبد خرید
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ===== سبد خرید =====
+        function addToCart(id, section) {
+            const product = products[section].find(p => p.id === id);
+            if (!product) return;
+            const existing = cart.find(item => item.id === id);
+            if (existing) existing.qty += 1;
+            else cart.push({ ...product, qty: 1 });
+            updateCartUI();
+            showToast('✅ ' + product.name + ' به سبد اضافه شد!');
+            
+            const btns = document.querySelectorAll('.add-to-cart');
+            btns.forEach(btn => {
+                if (btn.textContent.includes('افزودن')) {
+                    btn.classList.add('added');
+                    btn.textContent = '✓ اضافه شد';
+                    setTimeout(() => {
+                        btn.classList.remove('added');
+                        btn.textContent = 'افزودن به سبد خرید';
+                    }, 1200);
+                }
+            });
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+            showToast('🗑️ محصول از سبد حذف شد');
+        }
+
+        function toggleCart() {
+            document.getElementById('cartPanel').classList.toggle('open');
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItems');
+            const footer = document.getElementById('cartFooter');
+            const totalSpan = document.getElementById('cartTotal');
+            const badge = document.getElementById('cartBadge');
+
+            const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+            const totalPrice = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+            badge.textContent = totalItems;
+            if (totalItems > 0) {
+                badge.classList.add('bounce');
+                setTimeout(() => badge.classList.remove('bounce'), 500);
+            }
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="cart-empty">🛒 سبد خرید خالی است</div>';
+                footer.style.display = 'none';
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <div class="cart-item-price">${item.price}.۰۰ دلار × ${item.qty}</div>
+                    </div>
+                    <button class="cart-item-remove" onclick="removeFromCart(${item.id})">✕</button>
+                </div>
+            `).join('');
+
+            totalSpan.textContent = totalPrice.toFixed(2) + ' دلار';
+            footer.style.display = 'block';
+        }
+
+        // ===== فیلتر =====
+        function filterProducts(category, btn) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            const cards = document.querySelectorAll('#perfumeGrid .product-card');
+            cards.forEach(card => {
+                const cat = card.dataset.category;
+                card.style.display = (category === 'all' || cat === category) ? 'block' : 'none';
+            });
+        }
+
+        // ===== پیام =====
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // ===== پرداخت =====
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('⚠️ سبد خرید خالی است!');
+                return;
+            }
+            const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+            showToast('🎉 سفارش شما با موفقیت ثبت شد! مبلغ: ' + total.toFixed(2) + ' دلار');
+            cart = [];
+            updateCartUI();
+            setTimeout(() => toggleCart(), 500);
+        }
+
+        // ===== تغییر صفحات =====
+        function showSection(sectionId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.target === sectionId) btn.classList.add('active');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== افکت ریپل =====
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.add-to-cart');
+            if (!btn) return;
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+            ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+
+        // ===== شروع =====
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts('home');
+            renderProducts('perfumes');
+            renderProducts('cosmetics');
+            updateCartUI();
+        });
+    </script>
+
+</body>
+</html>
